@@ -23,8 +23,11 @@ export const counterSlice = createSlice({
     reset: (state, action) => {
       state.value = 0;
     },
-    input: (state, action) => {
+    incrementByInput: (state, action) => {
       state.value += action.payload;
+    },
+    decrementByInput: (state, action) => {
+      state.value -= action.payload;
     },
   },
 });

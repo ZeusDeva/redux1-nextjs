@@ -13,6 +13,7 @@ export default function Page() {
   //   setAmount("");
   // };
   const [incrementAmount, setIncrementAmount] = useState("2");
+  const [decrementAmount, setDecrementAmount] = useState("2");
 
   return (
     <>
@@ -72,14 +73,29 @@ export default function Page() {
       </form> */}
 
       <input
-        aria-label="Set increment amount"
+        aria-label="Set input increment"
         value={incrementAmount}
         onChange={(e) => setIncrementAmount(e.target.value)}
       />
       <button
-        onClick={() => dispatch(actions.input(Number(incrementAmount) || 0))}
+        onClick={() =>
+          dispatch(actions.incrementByInput(Number(incrementAmount) || 0))
+        }
       >
         Add Amount
+      </button>
+
+      <input
+        aria-label="Set input decrement"
+        value={decrementAmount}
+        onChange={(e) => setDecrementAmount(e.target.value)}
+      />
+      <button
+        onClick={() =>
+          dispatch(actions.decrementByInput(Number(decrementAmount) || 0))
+        }
+      >
+        Take off Amount
       </button>
     </>
   );
