@@ -4,14 +4,15 @@ import { actions } from "../redux/reducer/coutnerSlice";
 
 export default function Page() {
   const count = useSelector((state) => state.counter.value);
-  const [Amount, setAmount] = useState("");
+  // const [Amount, setAmount] = useState("");
   const dispatch = useDispatch();
   // const Input = () => dispatch(actions.reset());
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    dispatch(actions.input(Amount));
-    setAmount("");
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   dispatch(actions.input(Amount));
+  //   setAmount("");
+  // };
+  const [incrementAmount, setIncrementAmount] = useState("2");
 
   return (
     <>
@@ -55,7 +56,7 @@ export default function Page() {
         // value={Amount}
       />
       <button onClick={Input}>Input</button> */}
-
+      {/* 
       <form onSubmit={handleSubmit}>
         <label>
           <p>Add Amount</p>
@@ -68,7 +69,18 @@ export default function Page() {
         <div>
           <button type="submit">Add</button>
         </div>
-      </form>
+      </form> */}
+
+      <input
+        aria-label="Set increment amount"
+        value={incrementAmount}
+        onChange={(e) => setIncrementAmount(e.target.value)}
+      />
+      <button
+        onClick={() => dispatch(actions.input(Number(incrementAmount) || 0))}
+      >
+        Add Amount
+      </button>
     </>
   );
 }
